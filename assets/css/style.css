@@ -1,13 +1,3 @@
-/**
-* Template Name: Folio - v4.1.0
-* Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 body {
   background: #ffffff;
   color: #898989;
@@ -594,7 +584,7 @@ p {
 .services-block i {
   font-size: 44px;
   color: #b8a07e;
-  line-height: 44px;
+  line-height: 55px;
 }
 
 .services-slider .swiper-pagination {
