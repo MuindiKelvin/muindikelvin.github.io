@@ -1,0 +1,7 @@
+Admin Details
+
+UserName: admin
+Password: Test@12345
+
+
+
