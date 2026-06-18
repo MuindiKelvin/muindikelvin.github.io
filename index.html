@@ -441,6 +441,24 @@ footer span{color:var(--teal)}
 
 .noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
+/* CUSTOM CIRCULAR CURSOR */
+.cursor-ring{position:fixed;top:0;left:0;width:20px;height:20px;border:1.5px solid var(--teal);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:width 0.18s var(--ease-out),height 0.18s var(--ease-out),border-color 0.2s ease,opacity 0.2s ease;opacity:0}
+.cursor-ring.active{opacity:1}
+.cursor-ring.hovering{width:36px;height:36px;border-color:var(--violet)}
+.cursor-ring.clicking{width:13px;height:13px}
+.cursor-glow{position:fixed;top:0;left:0;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,180,0.16) 0%,transparent 70%);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.2s ease}
+.cursor-glow.active{opacity:1}
+.cursor-glow.hovering{background:radial-gradient(circle,rgba(157,125,250,0.16) 0%,transparent 70%)}
+@media (hover:hover) and (pointer:fine){
+  body.custom-cursor-on,body.custom-cursor-on a,body.custom-cursor-on button,body.custom-cursor-on [role="button"]{cursor:none}
+}
+@media (hover:none),(pointer:coarse){
+  .cursor-ring,.cursor-glow{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .cursor-ring,.cursor-glow{display:none}
+}
+
 @media(max-width:960px){
   .hero-inner{grid-template-columns:1fr;gap:48px}
   .terminal-wrap{max-width:500px}
@@ -487,6 +505,8 @@ footer span{color:var(--teal)}
 
 <div class="noise" aria-hidden="true"></div>
 <canvas id="particle-canvas" aria-hidden="true"></canvas>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <i class="fas fa-arrow-up" aria-hidden="true"></i>
@@ -1109,7 +1129,7 @@ footer span{color:var(--teal)}
       <span style="color:var(--border-2);">·</span>
       <span>Nairobi, Kenya</span>
       <span style="color:var(--border-2);">·</span>
-      <span>Built with care, deployed with confidence.</span>
+      <span style="font-family:'JetBrains Mono',monospace;">Built from experience, deployed with confidence.</span>
     </div>
   </div>
 </footer>
@@ -1450,7 +1470,52 @@ const statObserver = new IntersectionObserver(entries => {
   });
 }, {threshold:0.3});
 const statsBand = document.querySelector('.stats-band');
-if(statsBand) statObserver.observe(statsBand);
+if(statsBand) statObserver.observe(statsBand);/* ===== CUSTOM CIRCULAR CURSOR (ring + trailing glow) ===== */
+(function() {
+  const supportsCustomCursor = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!supportsCustomCursor || reducedMotion) return;
+
+  const ring = document.getElementById('cursorRing');
+  const glow = document.getElementById('cursorGlow');
+  if (!ring || !glow) return;
+
+  document.body.classList.add('custom-cursor-on');
+
+  let mx = window.innerWidth/2, my = window.innerHeight/2;
+  let gx = mx, gy = my;
+  let active = false;
+
+  window.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    ring.style.left = mx + 'px';
+    ring.style.top = my + 'px';
+    if (!active) { active = true; ring.classList.add('active'); glow.classList.add('active'); }
+  }, {passive:true});
+
+  window.addEventListener('mouseleave', () => { ring.classList.remove('active'); glow.classList.remove('active'); active = false; });
+  window.addEventListener('mouseenter', () => { ring.classList.add('active'); glow.classList.add('active'); active = true; });
+
+  window.addEventListener('mousedown', () => ring.classList.add('clicking'));
+  window.addEventListener('mouseup', () => ring.classList.remove('clicking'));
+
+  const hoverTargets = 'a, button, [role="button"], input, textarea, select, .flagship-card, .proj-card, .skill-card, .filter-btn, .logo, .menu-toggle, .back-to-top';
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest(hoverTargets)) { ring.classList.add('hovering'); glow.classList.add('hovering'); }
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest(hoverTargets)) { ring.classList.remove('hovering'); glow.classList.remove('hovering'); }
+  });
+
+  function animateGlow() {
+    gx += (mx - gx) * 0.14;
+    gy += (my - gy) * 0.14;
+    glow.style.left = gx + 'px';
+    glow.style.top = gy + 'px';
+    requestAnimationFrame(animateGlow);
+  }
+  animateGlow();
+})();
 </script>
 </body>
 </html>
