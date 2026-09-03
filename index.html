@@ -58,7 +58,20 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.65;
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(1100px 620px at 12% -8%, rgba(0,212,180,0.10) 0%, transparent 60%),
+    radial-gradient(900px 560px at 88% 4%, rgba(157,125,250,0.09) 0%, transparent 62%),
+    radial-gradient(1200px 800px at 50% 115%, rgba(0,160,138,0.07) 0%, transparent 65%),
+    linear-gradient(180deg, #060a15 0%, var(--bg) 24%, #081020 60%, #060a15 100%);
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--teal-dim);border-radius:3px}
@@ -158,7 +171,7 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,0.55);border-bottom-color:var(--bo
 .sec-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border-2),transparent)}
 
 /* FLAGSHIP CASE STUDIES */
-#work{background:var(--bg2)}
+#work{background:transparent}
 .flagship-list{display:flex;flex-direction:column;gap:28px}
 .flagship-card{
   background:var(--bg3);border:1px solid var(--border);border-radius:20px;overflow:hidden;
@@ -242,7 +255,7 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,0.55);border-bottom-color:var(--bo
 }
 
 /* ABOUT */
-#about{background:var(--bg)}
+#about{background:transparent}
 .about-grid{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start}
 .about-card{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:40px 32px;text-align:center;position:sticky;top:80px;transition:border-color var(--dur-med),box-shadow var(--dur-med) var(--ease-out)}
 .about-card:hover{border-color:var(--border-2);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
@@ -266,7 +279,7 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,0.55);border-bottom-color:var(--bo
 .arctic-badge i{color:var(--teal);font-size:1.05rem}
 
 /* SKILLS */
-#skills{background:var(--bg2)}
+#skills{background:transparent}
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(256px,1fr));gap:24px}
 .skill-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color var(--dur-med),box-shadow var(--dur-med) var(--ease-out);transform-style:preserve-3d;will-change:transform}
 .skill-card-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:16px}
@@ -291,7 +304,7 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,0.55);border-bottom-color:var(--bo
 .prof-val{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--teal);text-align:right}
 
 /* PROJECTS GRID (secondary) */
-#projects{background:var(--bg)}
+#projects{background:transparent}
 .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
 .filter-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text-3);padding:8px 18px;border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all var(--dur-fast);font-family:'Inter',sans-serif;min-height:36px}
 .filter-btn:hover{background:var(--teal-subtle);border-color:var(--border-2);color:var(--teal)}
@@ -368,7 +381,7 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,0.55);border-bottom-color:var(--bo
 }
 
 /* EXPERIENCE */
-#experience{background:var(--bg2)}
+#experience{background:transparent}
 .timeline{position:relative;padding-left:2px}
 .timeline::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--violet),transparent);border-radius:2px}
 .tl-item{position:relative;padding-left:52px;margin-bottom:32px}
@@ -386,7 +399,7 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,0.55);border-bottom-color:var(--bo
 .tl-bullets li::before{content:'▸';position:absolute;left:0;color:var(--teal);font-size:0.72rem;top:3px}
 
 /* EDUCATION */
-#education{background:var(--bg)}
+#education{background:transparent}
 .edu-grid{display:flex;flex-direction:column;gap:16px;max-width:680px}
 .edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:24px 32px;display:flex;align-items:flex-start;gap:24px;transition:border-color var(--dur-med),transform var(--dur-med) var(--ease-out)}
 .edu-card:hover{border-color:var(--border-2);transform:translateX(6px)}
@@ -397,7 +410,7 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,0.55);border-bottom-color:var(--bo
 .edu-detail{color:var(--text-2);font-size:0.83rem;margin-top:4px}
 
 /* CONTACT */
-#contact{background:var(--bg2)}
+#contact{background:transparent}
 .cv-banner{background:linear-gradient(135deg,rgba(0,212,180,0.1),rgba(157,125,250,0.08));border:1px solid rgba(0,212,180,0.2);border-radius:18px;padding:40px;text-align:center;margin-bottom:64px;position:relative;overflow:hidden;transition:border-color var(--dur-med),transform var(--dur-med) var(--ease-out)}
 .cv-banner:hover{border-color:rgba(0,212,180,0.35);transform:translateY(-2px)}
 .cv-banner h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:6px}
@@ -545,12 +558,14 @@ footer span{color:var(--teal)}
         Available for opportunities · Nairobi, Kenya
       </div>
       <h1 id="hero-title">
-        I build machine learning systems that <span class="accent">ship</span>, not just notebooks that run.
+        I'm a <span class="accent">software engineer</span> who also builds machine learning systems that ship, not just notebooks that run.
       </h1>
       <p class="hero-desc">
         Software engineer and data scientist turning healthcare and agricultural data into deployed, working software, end to end, from data pipeline to interface, on every project.
       </p>
       <div class="hero-proof" aria-label="Key credentials">
+        <span class="proof-chip"><i class="fas fa-code" aria-hidden="true"></i> Full-stack software engineering</span>
+        <span class="proof-chip"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> M-PESA payment integration</span>
         <span class="proof-chip"><i class="fas fa-rocket" aria-hidden="true"></i> 20+ deployed applications</span>
         <span class="proof-chip"><i class="fas fa-snowflake" aria-hidden="true"></i> 2 GitHub Arctic Code Vault repos</span>
         <span class="proof-chip"><i class="fas fa-heart-pulse" aria-hidden="true"></i> NHS-aligned clinical ML</span>
@@ -576,8 +591,8 @@ footer span{color:var(--teal)}
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-c">self.</span><span class="t-v">name</span> <span class="t-c">=</span> <span class="t-s">"<span id="scrambleName">Kelvin Muindi</span>"</span></div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-c">self.</span><span class="t-v">based_in</span> <span class="t-c">=</span> <span class="t-s">"Nairobi, KE"</span></div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-c">self.</span><span class="t-v">focus</span> <span class="t-c">= [</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-s">"Software Engineering"</span><span class="t-c">,</span></div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-s">"Applied ML"</span><span class="t-c">,</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-s">"Full-Stack Engineering"</span><span class="t-c">,</span></div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-s">"HCI &amp; Research"</span></div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-c">]</span></div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-c">self.</span><span class="t-v">deployed_apps</span> <span class="t-c">=</span> <span class="t-num">20</span><span class="t-c">+</span></div>
@@ -807,7 +822,7 @@ footer span{color:var(--teal)}
       </div>
       <div class="about-text reveal" style="transition-delay:0.1s;">
         <p>I'm a software engineer and data scientist who builds machine learning models and ships them as real, usable applications, not just notebooks. My applied work spans credit scoring, fraud detection, sentiment analysis, and cardiovascular risk prediction aligned with NHS clinical guidelines.</p>
-        <p>Alongside ML, I build full-stack web applications and dashboards with React JS, Streamlit, and Tableau. I bring a human-computer interaction and design-thinking background to that work, so the systems I build are usable and aligned with how real users actually behave, not just technically correct.</p>
+        <p>Alongside ML, I build full-stack web applications and dashboards with React JS, Streamlit, and Tableau, including M-PESA payment integration for clients who need mobile-money checkout built directly into their product. I bring a human-computer interaction and design-thinking background to that work, so the systems I build are usable and aligned with how real users actually behave, not just technically correct.</p>
         <p>I also work as a freelance technical researcher and writer, producing case-study-based academic papers in computer science, a practice that keeps my research and technical-communication skills sharp alongside the engineering work. Two of my repositories have been preserved in <strong>GitHub's Arctic Code Vault Archive Program</strong>, and I've independently shipped more than 20 deployed applications across healthcare AI, agriculture, computer vision, and full-stack web development.</p>
       </div>
     </div>
@@ -848,7 +863,7 @@ footer span{color:var(--teal)}
         <div class="tags">
           <span class="tag">React JS</span><span class="tag">JavaScript</span><span class="tag">HTML5</span>
           <span class="tag">CSS3</span><span class="tag">PHP</span><span class="tag">MySQL</span>
-          <span class="tag">Firebase</span><span class="tag">Git / GitHub</span>
+          <span class="tag">Firebase</span><span class="tag">M-PESA API Integration</span><span class="tag">Git / GitHub</span>
         </div>
       </div>
       <div class="skill-card reveal" style="transition-delay:0.24s;">
